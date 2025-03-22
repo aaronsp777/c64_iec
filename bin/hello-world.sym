@@ -1,0 +1,3 @@
+.label CHROUT=$ffd2
+.label loop=$c002
+.label hello=$c00e

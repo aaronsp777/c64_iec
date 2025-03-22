@@ -1,0 +1,13 @@
+Output dir: /Users/aaron/git/c64_iec/bin
+parsing
+flex pass 1
+flex pass 2
+Output pass
+Writing prg file: hello-world.prg
+
+Memory Map
+----------
+Default-segment:
+  $c000-$c01a Unnamed
+
+Writing Symbol file: hello-world.sym

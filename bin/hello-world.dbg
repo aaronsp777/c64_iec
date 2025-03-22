@@ -1,0 +1,33 @@
+<C64debugger version="1.0">
+   <Sources values="INDEX,FILE">
+      0,KickAss.jar:/include/autoinclude.asm
+      1,/Users/aaron/git/c64_iec/hello-world.s
+   </Sources>
+
+   <Segment name="Default" dest="" values="START,END,FILE_IDX,LINE1,COL1,LINE2,COL2">
+      <Block name="Unnamed">
+         $c000,$c001,1,7,5,7,7
+         $c002,$c004,1,9,5,9,7
+         $c005,$c007,1,10,5,10,7
+         $c008,$c008,1,11,5,11,7
+         $c009,$c00a,1,12,5,12,7
+         $c00b,$c00c,1,13,5,13,7
+         $c00d,$c00d,1,14,5,14,7
+         $c00e,$c019,1,17,1,17,5
+         $c01a,$c01a,1,18,1,18,5
+      </Block>
+   </Segment>
+
+   <Labels values="SEGMENT,ADDRESS,NAME,START,END,FILE_IDX,LINE1,COL1,LINE2,COL2">
+      Default,$ffd2,CHROUT,1,5,8,5,13
+      Default,$c002,loop,1,8,1,8,5
+      Default,$c00e,hello,1,16,1,16,6
+   </Labels>
+
+   <Breakpoints values="SEGMENT,ADDRESS,ARGUMENT">
+   </Breakpoints>
+
+   <Watchpoints values="SEGMENT,ADDRESS1,ADDRESS2,ARGUMENT">
+   </Watchpoints>
+
+</C64debugger>
