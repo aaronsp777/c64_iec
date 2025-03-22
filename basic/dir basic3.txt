@@ -1,0 +1,21 @@
+10 open1,8,0,"$"
+12 if st <> 0 then end
+15 gosub 150 : rem skip start address
+17 gosub 150 : rem skip next address
+18 if st <> 0   then close 1 : end
+19 gosub 150 : print a;
+30 gosub 100
+32 if st <> 0 then close 1 : end
+35 if a = 0 then print : goto 17
+40 print chr$(a);
+50 goto 30
+100 rem read raw byte into a
+110 get#1,a$
+120 if a$ = "" then a$=chr$(0)
+130 a=asc(a$)
+140 return
+150 rem read low, high bytes into a
+160 gosub 100 : l = a
+170 gosub 100 : h = a
+180 a = l + h * 256
+190 return

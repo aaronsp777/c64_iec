@@ -1,0 +1,16 @@
+.label CHRIN=$ffcf
+.label SETLFS=$ffba
+.label CLRCHN=$ffcc
+.label CLOSE=$ffc3
+.label SETNAM=$ffbd
+.label printdec=$c056
+.label READST=$ffb7
+.label OPEN=$ffc0
+.label CHROUT=$ffd2
+.label filename=$c066
+.label nextline=$c026
+.label nextbyte=$c03c
+.label open_fail=$c055
+.label CHKIN=$ffc6
+.label end=$c04c
+.label DISK=$8
