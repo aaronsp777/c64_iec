@@ -65,17 +65,16 @@ printdec:
     // TODO
     lda #13
     jsr CHROUT
-    lda #'0'
-    jsr CHROUT
+    tya
+    jsr LINPRT
     lda #' '
-    jsr CHROUT
-    rts
+    jmp CHROUT
 
 filename:
 .text "$"
 
 
-
+.label LINPRT = $BDCD
 .label READST = $FFB7
 .label SETLFS = $FFBA
 .label SETNAM = $FFBD
