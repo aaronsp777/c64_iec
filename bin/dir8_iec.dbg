@@ -1,0 +1,112 @@
+<C64debugger version="1.0">
+   <Sources values="INDEX,FILE">
+      0,/Users/aaron/git/c64_iec/dir8_iec.s
+      1,KickAss.jar:/include/autoinclude.asm
+   </Sources>
+
+   <Segment name="Default" dest="" values="START,END,FILE_IDX,LINE1,COL1,LINE2,COL2">
+      <Block name="Unnamed">
+         $c000,$c001,0,11,5,11,7
+         $c002,$c004,0,12,5,12,7
+         $c005,$c006,0,13,5,13,7
+         $c007,$c009,0,14,5,14,7
+         $c00a,$c00c,0,15,5,15,7
+         $c00d,$c00e,0,16,5,16,7
+         $c00f,$c010,0,17,5,17,7
+         $c011,$c013,0,18,5,18,7
+         $c014,$c015,0,21,5,21,7
+         $c016,$c018,0,22,5,22,7
+         $c019,$c01a,0,23,5,23,7
+         $c01b,$c01d,0,24,5,24,7
+         $c01e,$c01f,0,26,5,26,7
+         $c020,$c022,0,27,5,27,7
+         $c023,$c024,0,28,5,28,7
+         $c025,$c027,0,29,5,29,7
+         $c028,$c02a,0,31,5,31,7
+         $c02b,$c02d,0,32,5,32,7
+         $c02e,$c02e,0,33,5,33,7
+         $c02f,$c02f,0,34,5,34,7
+         $c030,$c031,0,35,5,35,7
+         $c032,$c033,0,36,5,36,7
+         $c034,$c036,0,37,5,37,7
+         $c037,$c039,0,40,5,40,7
+         $c03a,$c03c,0,43,5,43,7
+         $c03d,$c03d,0,44,5,44,7
+         $c03e,$c03e,0,45,5,45,7
+         $c03f,$c040,0,46,5,46,7
+         $c041,$c043,0,48,5,48,7
+         $c044,$c046,0,48,16,48,18
+         $c047,$c049,0,50,5,50,7
+         $c04a,$c04a,0,51,5,51,7
+         $c04b,$c04b,0,52,5,52,7
+         $c04c,$c04d,0,53,5,53,7
+         $c04e,$c050,0,56,5,56,7
+         $c051,$c052,0,57,5,57,7
+         $c053,$c053,0,58,5,58,7
+         $c054,$c056,0,59,5,59,7
+         $c057,$c057,0,60,5,60,7
+         $c058,$c05a,0,61,5,61,7
+         $c05b,$c05d,0,65,5,65,7
+         $c05e,$c05e,0,66,5,66,7
+         $c05f,$c05f,0,67,5,67,7
+         $c060,$c061,0,68,5,68,7
+         $c062,$c064,0,70,5,70,7
+         $c065,$c066,0,71,5,71,7
+         $c067,$c068,0,73,5,73,7
+         $c069,$c06b,0,74,5,74,7
+         $c06c,$c06e,0,75,5,75,7
+         $c06f,$c071,0,78,5,78,7
+         $c072,$c073,0,79,5,79,7
+         $c074,$c076,0,80,5,80,7
+         $c077,$c078,0,81,5,81,7
+         $c079,$c07b,0,82,5,82,7
+         $c07c,$c07e,0,83,5,83,7
+         $c07f,$c080,0,84,5,84,7
+         $c081,$c083,0,85,5,85,7
+         $c084,$c084,0,86,5,86,7
+         $c085,$c085,0,91,5,91,7
+         $c086,$c087,0,96,5,96,7
+         $c088,$c08a,0,97,5,97,7
+         $c08b,$c08c,0,98,5,98,7
+         $c08d,$c08f,0,99,5,99,7
+         $c090,$c091,0,100,5,100,7
+         $c092,$c094,0,101,5,101,7
+         $c095,$c095,0,102,5,102,7
+         $c096,$c097,0,105,5,105,7
+         $c098,$c09a,0,106,5,106,7
+         $c09b,$c09b,0,107,5,107,7
+      </Block>
+   </Segment>
+
+   <Labels values="SEGMENT,ADDRESS,NAME,START,END,FILE_IDX,LINE1,COL1,LINE2,COL2">
+      Default,$00f0,OPEN_CHANNEL,0,5,8,5,19
+      Default,$0060,REOPEN_CHANNEL,0,6,8,6,21
+      Default,$00e0,CLOSE_CHANNEL,0,7,8,7,20
+      Default,$0008,DISK,0,9,8,9,11
+      Default,$c014,open1,0,20,1,20,6
+      Default,$c037,open2,0,39,2,39,7
+      Default,$c03a,nextline,0,42,1,42,9
+      Default,$c05b,nextbyte,0,64,1,64,9
+      Default,$c06f,end,0,77,1,77,4
+      Default,$c085,open_fail,0,89,1,89,10
+      Default,$c086,printdec,0,93,1,93,9
+      Default,$c096,ERROR,0,104,1,104,6
+      Default,$0090,STATUS,0,109,8,109,13
+      Default,$ff93,SECOND,0,111,8,111,13
+      Default,$ff96,TALKSA,0,112,8,112,13
+      Default,$ffa5,ACPTR,0,113,8,113,12
+      Default,$ffa8,CIOUT,0,114,8,114,12
+      Default,$ffae,UNLSN,0,115,8,115,12
+      Default,$ffb1,LISTEN,0,116,8,116,13
+      Default,$ffb4,TALK,0,117,8,117,11
+      Default,$ffba,UNTLK,0,118,8,118,12
+      Default,$ffd2,CHROUT,0,119,8,119,13
+   </Labels>
+
+   <Breakpoints values="SEGMENT,ADDRESS,ARGUMENT">
+   </Breakpoints>
+
+   <Watchpoints values="SEGMENT,ADDRESS1,ADDRESS2,ARGUMENT">
+   </Watchpoints>
+
+</C64debugger>
