@@ -1,0 +1,39 @@
+
+* Open
+
+OPEN <fileno>,<device>,<channel>,<filename>
+examples:
+open 4,4
+open 15,8,15
+open 2,8,2,"OUTFILE,S"
+open 1,8,0,"$"
+
+open 1,8,0,"PROGRAM"
+
+Note: The fileno is managed by the OS and is not sent over the wire.
+
+# single layer
+if filename != "" && 0<= channel <= 127 {
+    listen(device)   # eg F8 for disk
+    second(F0 | channel)  # eg 20 for channel 0
+    send<filename>
+    unlisten
+    # if the device doesn't response, bit 7 of $90 is 1 for
+    # DEVICE_NOT_PRESENT
+    Carry bit is clear on success
+}
+
+# bit layer
+if filename != "" {
+    ATN low
+    20 | device  # listen device <device>
+    F0 | channel  # Open channel
+    ATN hi
+    <filename>
+    3F # unlisten
+}
+
+* Close
+    listen(device)
+    second(E0 | channel)
+    unlisten
