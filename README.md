@@ -10,5 +10,5 @@
 
 # Useful references
 * https://c64os.com/post/c64kernalrom
-# Ben Eater: [Connecting an LCD to our computer — 6502 part 4](https://www.youtube.com/watch?v=FY3zTUaykVo)
-# [6502 opcodes](http://www.6502.org/users/obelisk/6502/reference.html)
+* [6502 opcodes](http://www.6502.org/users/obelisk/6502/reference.html)
+* Ben Eater: [Connecting an LCD to our computer — 6502 part 4](https://www.youtube.com/watch?v=FY3zTUaykVo)
