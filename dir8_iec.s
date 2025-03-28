@@ -8,71 +8,58 @@
 
 .label DISK = 8
     // open _,8,0,"$"
+    lda #0
+    sta STATUS
     lda #DISK
     jsr LISTEN
     lda #OPEN_CHANNEL + 0
     jsr SECOND
-    lda STATUS
-    bpl open1
-    lda #5  // device not present
-    jmp ERROR
 
-open1:
+    // check for device not present
+    ldx #5
+    bit STATUS
+    bmi error
     lda #'$'
     jsr CIOUT
-    bcs open_fail
     jsr UNLSN
-    // open done
+
+    // open done, start reading
     lda #DISK
     jsr TALK
     lda #REOPEN_CHANNEL + 0
     jsr TALKSA
 
-    jsr ACPTR  // ignore start address lo
-    lda STATUS
-    lsr
-    lsr
-    beq open2
-    lda #4  // file not found
-    jmp ERROR
-
- open2:   
-    jsr ACPTR  // ignore start address hi
-
+    jsr read2  // program load address
+    beq nextline
+    ldx #4  // file not found
+    bne error  // always jump
+ 
 nextline:
-    lda STATUS
-    lsr
-    lsr
-    bcs end
-    // Skip next address
-    jsr ACPTR; jsr ACPTR
+    jsr read2  // next line address
+    bne end  // end of file
 
-    lda STATUS
-    lsr
-    lsr
-    bcs end
+    // Read & print line number
+    lda #'\r'
+    jsr CHROUT
+    jsr read2
+    jsr LINPRT
+    lda #' '
+    jsr CHROUT
 
-    // Read line number
+nextchar:
     jsr ACPTR
-    bcs end
-    tax
-    jsr ACPTR
-    tay
-    jsr printdec
-
-
-nextbyte:
-    lda STATUS
-    lsr
-    lsr
-    bcs end
-
-    jsr ACPTR
-    bcs end
-
     beq nextline
     jsr CHROUT
-    jmp nextbyte
+    bne nextchar  // always branch
+
+read2:
+    // Reads a 16 bit, little endian value from disk
+    // A=high byte, X=low byte, Y&SR=Status code
+    jsr ACPTR
+    tax
+    jsr ACPTR
+    ldy STATUS
+    rts
 
 end:
     jsr UNTLK 
@@ -80,34 +67,13 @@ end:
     jsr LISTEN
     lda #CLOSE_CHANNEL + 0
     jsr SECOND
-    jsr UNLSN
-    lda #3
-    jsr ERROR
-    rts
+    jmp UNLSN
 
-
-open_fail:
-    // TODO - fixme - .A contains error
-    rts
-
-printdec:
-    // print decimal in x<, y>
-    // TODO
-    lda #13
-    jsr CHROUT
-    lda #'0'
-    jsr CHROUT
-    lda #' '
-    jsr CHROUT
-    rts
-
-ERROR:
-    ora #'0'
-    jsr CHROUT
-    rts
+error:
+    jmp ($0300)
 
 .label STATUS = $90
-// .label ERROR = $F715
+.label LINPRT = $BDCD
 .label SECOND = $FF93
 .label TALKSA = $FF96
 .label ACPTR = $FFA5
