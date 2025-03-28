@@ -7,21 +7,16 @@
 .label CHANNEL = 15
 .label REOPEN = $60
 
-    lda #0
-    sta STATUS
     lda #DISK
     jsr TALK
     lda #REOPEN | CHANNEL
     jsr TALKSA
-    bit STATUS
-    bmi done  // DEVICE NOT PRESENT
-
-loop:
+ loop:
     jsr ACPTR
     bit STATUS
     bvs done  // End of file
     jsr CHROUT
-    jmp loop
+    bne loop
 
 done:
     jmp UNTLK
