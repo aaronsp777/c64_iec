@@ -7,6 +7,8 @@
 .label CHANNEL = 15
 .label REOPEN = $60
 
+    lda #0
+    sta STATUS
     lda #DISK
     jsr TALK
     lda #REOPEN | CHANNEL
