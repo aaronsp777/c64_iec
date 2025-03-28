@@ -14,61 +14,53 @@
     ldy #>filename
     jsr SETNAM
     jsr OPEN
-    bcs open_fail
-
-    jsr READST
-    bne end
-
+    bcs error
     ldx #DISK
     jsr CHKIN
 
     // Skip start address
-    jsr CHRIN; jsr CHRIN
+    jsr read2
+    jsr READST
+    beq nextline
+    lda #4  // File not found
+    bne error
 
 nextline:
     // Skip next address
-    jsr CHRIN; jsr CHRIN
-
-    // Read line number
+    jsr read2
     jsr READST
     bne end
 
-    jsr CHRIN
-    tax
-    jsr CHRIN
-    tay
-    jsr printdec
-
+    // Read & print line number
+    lda #'\r'
+    jsr CHROUT
+    jsr read2
+    jsr LINPRT
+    lda #' '
+    jsr CHROUT
 
 nextbyte:
-    jsr READST
-    bne end
-
     jsr CHRIN
     beq nextline
     jsr CHROUT
-    jmp nextbyte
+    bne nextbyte  // always branch
+
+read2:
+    // Reads a 16 bit, little endian value from disk
+    // A=high byte, X=low byte
+    jsr CHRIN
+    tax
+    jmp CHRIN
 
 end:
     jsr CLRCHN
     lda #DISK
-    jsr CLOSE
-    rts
+    jmp CLOSE
 
 
-open_fail:
-    // TODO - fixme - .A contains error
-    rts
-
-printdec:
-    // print decimal in x<, y>
-    // TODO
-    lda #13
-    jsr CHROUT
-    tya
-    jsr LINPRT
-    lda #' '
-    jmp CHROUT
+error:
+    tax
+    jmp ($0300)
 
 filename:
 .text "$"
